@@ -63,7 +63,7 @@ def ingest_page() -> None:
                 if base.endswith(f"_{embed_suffix}"):
                     collection_input.set_value(base[: -len(f"_{embed_suffix}")])
 
-        append_model_checkbox = ui.checkbox(
+        ui.checkbox(
             f"Append embedding model to collection name  ({embed_suffix})",
             on_change=lambda e: _update_collection_name(e.value),
         )

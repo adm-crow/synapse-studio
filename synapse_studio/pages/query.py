@@ -59,14 +59,13 @@ def query_page() -> None:
                     col_model = collection_stats(state.db_path, col_name).embedding_model or None
                 except Exception:
                     col_model = None
-                extra = {"embedding_model": col_model} if col_model else {}
                 results = query(
                     text=text,
                     db_path=state.db_path,
                     collection_name=col_name,
                     n_results=int(n_results.value),
                     min_score=float(min_score.value),
-                    **extra,
+                    embedding_model=col_model,
                 )
             except Exception as exc:
                 results_column.clear()

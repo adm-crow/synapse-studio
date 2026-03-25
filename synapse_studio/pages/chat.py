@@ -100,14 +100,13 @@ def chat_page() -> None:
                         col_model = stats.embedding_model or None
                     except Exception:
                         col_model = None
-                    extra = {"embedding_model": col_model} if col_model else {}
                     results = await asyncio.to_thread(
                         query,
                         text=text,
                         db_path=state.db_path,
                         collection_name=col_name,
                         n_results=int(n_ctx.value),
-                        **extra,
+                        embedding_model=col_model,
                     )
                     context = "\n\n".join(r["text"] for r in results)
                     answer = await asyncio.to_thread(
