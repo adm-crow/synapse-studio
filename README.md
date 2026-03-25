@@ -1,55 +1,40 @@
-# Synapse Studio
+<div align="center">
+  <img src="https://raw.githubusercontent.com/adm-crow/synapse-studio/main/synapse_studio/static/favicon.svg" alt="Synapse Studio" width="90" /><br/><br/>
 
-A native desktop GUI for [synapse-core](https://github.com/adm-crow/synapse) — a local-first RAG (Retrieval-Augmented Generation) library.
-Built with [NiceGUI](https://nicegui.io/) (Python-native desktop window, no browser required).
+  <h1>Synapse Studio</h1>
+  <p><strong>Native desktop GUI for <a href="https://github.com/adm-crow/synapse">synapse-core</a> — ingest documents, search semantically, chat with your data.</strong></p>
 
-> No cloud, no infrastructure. Everything runs locally on your machine.
+![Python](https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square&logo=python&logoColor=white)
+![GitHub License](https://img.shields.io/github/license/adm-crow/synapse-studio?style=flat-square&logo=github&logoColor=white)
+![GitHub release date](https://img.shields.io/github/release-date/adm-crow/synapse-studio?display_date=published_at&style=flat-square&logo=github&logoColor=white)
+
+</div>
 
 ---
 
-## Features
+No cloud, no browser, no infrastructure. Synapse Studio runs entirely on your machine as a native desktop window — point it at a folder, ingest, and start searching or chatting with your documents.
 
-| Tab | Description |
+| | |
 |---|---|
-| **Query** | Semantic search over your ingested documents with score filtering |
-| **Chat** | RAG-powered chat using your documents as context (Anthropic / OpenAI) |
+| **Query** | Semantic search with score filtering and result cards |
+| **Chat** | RAG-powered AI chat using your documents as context |
 | **Collections** | Browse, inspect, and manage vector collections |
-| **Ingest** | Index a local folder into a collection with real-time progress |
-| **Settings** | Configure database path, AI provider, embedding model, and theme |
+| **Ingest** | Index a local folder with real-time progress and model mismatch detection |
+| **Settings** | Provider, model, API key, embedding model, theme, dark mode |
 
 ---
 
-## Supported file formats
-
-`.txt` `.md` `.csv` `.pdf` `.docx` `.json` `.jsonl` `.html` `.pptx` `.xlsx` `.epub` `.odt`
-
-Requires the `[formats]` extra of synapse-core for `.html`, `.pptx`, `.xlsx`, `.epub`, `.odt`:
-```bash
-pip install "synapse-core[formats]"
-```
-
----
-
-## Requirements
-
-- Python 3.11+
-- [synapse-core](https://github.com/adm-crow/synapse) ≥ 1.1.1
-
----
-
-## Installation
+## Install
 
 ```bash
 pip install synapse-studio
 ```
 
-Or from source:
-
-```bash
-git clone https://github.com/adm-crow/synapse-studio.git
-cd synapse-studio
-pip install -e .
-```
+> [!NOTE]
+> To support additional file formats (`.html` `.pptx` `.xlsx` `.epub` `.odt`), install the `formats` extra of synapse-core:
+> ```bash
+> pip install "synapse-core[formats]"
+> ```
 
 ---
 
@@ -59,26 +44,28 @@ pip install -e .
 synapse-studio
 ```
 
-The app opens as a native desktop window. On first launch, open **Settings** to configure:
-- **DB path** — where the vector database is stored (default: `./synapse_db`)
-- **Embedding model** — any [sentence-transformers](https://huggingface.co/models?library=sentence-transformers) model (default: `all-MiniLM-L6-v2`)
-- **AI provider / model / API key** — for the Chat tab (supports Anthropic and OpenAI)
+The app opens as a native desktop window. On first launch, go to **Settings** and configure:
 
-Then go to **Ingest**, select a folder, and click **Start Ingest**. Once complete, use **Query** or **Chat** to search your documents.
+- **DB path** — where your vector database is stored (default: `./synapse_db`)
+- **Embedding model** — any [sentence-transformers](https://huggingface.co/models?library=sentence-transformers) model (default: `all-MiniLM-L6-v2`)
+- **AI provider / model / API key** — required for the Chat tab (Anthropic or OpenAI)
+
+Then open **Ingest**, pick a folder, and click **Start Ingest**. Use **Query** or **Chat** once ingestion is complete.
 
 ---
 
-## Configuration
+## Supported file formats
 
-Settings are persisted to `synapse.toml` in the working directory.
-This file is **excluded from version control** (see `.gitignore`) as it contains local paths and API keys.
+`.txt` `.md` `.csv` `.pdf` `.docx` `.json` `.jsonl` `.html`* `.pptx`* `.xlsx`* `.epub`* `.odt`*
+
+*requires `synapse-core[formats]`
 
 ---
 
 ## Embedding models
 
-Any model from [Hugging Face sentence-transformers](https://huggingface.co/models?library=sentence-transformers&sort=downloads) works.
-See also the [MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard) for quality benchmarks.
+Any model from [Hugging Face sentence-transformers](https://huggingface.co/models?library=sentence-transformers&sort=downloads) works — paste the model name directly into **Settings → Embedding model**.
+See the [MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard) to compare quality.
 
 | Model | Dims | Notes |
 |---|---|---|
@@ -87,16 +74,28 @@ See also the [MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard) 
 | `BAAI/bge-large-en-v1.5` | 1024 | Best quality, slower |
 | `paraphrase-multilingual-MiniLM-L12-v2` | 384 | Multilingual (50+ languages) |
 
-> ⚠️ Each collection is tied to the model used at ingest time. Do not mix models within the same collection.
+> [!WARNING]
+> Each collection is tied to the model used at ingest time. Do not mix models within the same collection — Synapse Studio will warn you if a mismatch is detected before ingesting.
 
 ---
 
-## Related
+## Configuration
 
-- [synapse-core](https://github.com/adm-crow/synapse) — the underlying RAG library (CLI + Python API)
+Settings are saved to `synapse.toml` in the working directory. This file is excluded from version control (`.gitignore`) as it contains local paths and API keys.
 
 ---
 
-## License
+## Requirements
 
-MIT — synapse-core is licensed under Apache-2.0.
+- Python 3.11+
+- [synapse-core](https://github.com/adm-crow/synapse) ≥ 1.1.1 (installed automatically)
+
+---
+
+<div align="center">
+  <sub>
+    <a href="https://github.com/adm-crow/synapse">synapse-core</a> ·
+    <a href="https://pypi.org/project/synapse-core/">PyPI</a> ·
+    <a href="LICENSE">MIT</a>
+  </sub>
+</div>
