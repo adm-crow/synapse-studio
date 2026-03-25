@@ -36,7 +36,7 @@ def chat_page() -> None:
             ).props("flat color=grey-5 dense").tooltip("Refresh collections")
 
         # ── Chat history ───────────────────────────────────────────
-        chat_area = ui.scroll_area().classes("w-full border rounded-lg bg-grey-9").style("height: 420px")
+        chat_area = ui.scroll_area().classes("w-full border rounded-lg bg-grey-9").style("height: 500px")
         messages_col: ui.column | None = None
 
         def render_history() -> None:
