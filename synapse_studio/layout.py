@@ -28,10 +28,6 @@ def build_layout(current_path: str = "/") -> None:
     with overlay:
         ui.spinner(size="xl", color="white")
 
-    with ui.header(elevated=True).classes("bg-grey-9 text-white items-center gap-3 px-4 h-12"):
-        ui.label("⚡ Synapse Studio").classes("text-subtitle1 font-bold")
-        ui.space()
-
     with ui.left_drawer(fixed=True, bordered=True).classes("bg-grey-9 flex flex-col").style("width: 220px; height: 100%; overflow-x: hidden"):
         ui.space().style("height: 8px")
 

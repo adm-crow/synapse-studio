@@ -32,7 +32,7 @@ def _mix(hex1: str, hex2: str, t: float) -> str:
 def settings_page() -> None:
     build_layout("/settings")
 
-    with ui.column().classes("w-full q-pa-xl gap-6"):
+    with ui.column().classes("w-full q-pa-md gap-4"):
         ui.label("Settings").classes("text-h5")
 
         with ui.row().classes("w-full gap-6 items-start"):

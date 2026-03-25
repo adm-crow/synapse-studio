@@ -42,6 +42,7 @@ def run() -> None:
     ui.run(
         native=True,
         title="Synapse Studio",
+        favicon="⚡",
         window_size=_WINDOW_SIZE,
         reload=False,
         port=_PORT,
