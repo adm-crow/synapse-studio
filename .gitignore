@@ -1,0 +1,28 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# User config — contains local paths and API keys, never commit
+synapse.toml
+
+# User database — local vector store, never commit
+synapse_db/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
