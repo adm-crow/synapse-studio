@@ -26,16 +26,8 @@ No cloud, no browser, no infrastructure. Synapse Studio runs entirely on your ma
 
 ## Screenshots
 
-| Query | Chat |
-|:---:|:---:|
-| ![Query](docs/screenshots/query.png) | ![Chat](docs/screenshots/chat.png) |
-
-| Collections | Ingest |
-|:---:|:---:|
-| ![Collections](docs/screenshots/collections.png) | ![Ingest](docs/screenshots/ingest.png) |
-
 <div align="center">
-  <img src="docs/screenshots/settings.png" alt="Settings" width="80%" />
+  <img src="docs/screenshots/query.png" alt="Synapse Studio — Query tab" width="90%" />
 </div>
 
 ---
