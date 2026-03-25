@@ -17,3 +17,6 @@ synapse-studio = "synapse_studio.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["synapse_studio"]
+
+[tool.hatch.build.targets.wheel.sources]
+"synapse_studio/static" = "synapse_studio/static"

@@ -1,7 +1,10 @@
 import asyncio
 import sys
+from pathlib import Path
 from nicegui import ui, app as nicegui_app
 from synapse_studio.state import state
+
+_FAVICON = Path(__file__).parent / "static" / "favicon.svg"
 
 
 def _exception_handler(loop: asyncio.AbstractEventLoop, context: dict) -> None:
@@ -42,7 +45,7 @@ def run() -> None:
     ui.run(
         native=True,
         title="Synapse Studio",
-        favicon="⚡",
+        favicon=_FAVICON,
         window_size=_WINDOW_SIZE,
         reload=False,
         port=_PORT,
