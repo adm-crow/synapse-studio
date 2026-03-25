@@ -18,7 +18,7 @@ def chat_page() -> None:
 
     ui.add_head_html("<style>.q-message-name { color: white !important; }</style>")
 
-    with ui.column().classes("w-full q-pa-md gap-4").style("height: 100vh; overflow: hidden; box-sizing: border-box;"):
+    with ui.column().classes("w-full q-pa-md gap-4"):
         ui.label("Chat").classes("text-h5")
 
         # ── Config bar ─────────────────────────────────────────────
@@ -36,7 +36,7 @@ def chat_page() -> None:
             ).props("flat color=grey-5 dense").tooltip("Refresh collections")
 
         # ── Chat history ───────────────────────────────────────────
-        chat_area = ui.scroll_area().classes("w-full border rounded-lg bg-grey-9").style("flex: 1; min-height: 0;")
+        chat_area = ui.scroll_area().classes("w-full border rounded-lg bg-grey-9").style("height: 420px")
         messages_col: ui.column | None = None
 
         def render_history() -> None:
